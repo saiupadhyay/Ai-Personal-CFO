@@ -97,7 +97,7 @@ export default function Budget() {
                   <XAxis dataKey="name" tick={{fill: '#a1a1aa'}} />
                   <YAxis tick={{fill: '#a1a1aa'}} />
                   <Tooltip 
-                    formatter={(value: number) => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(value)} 
+                    formatter={(value: number | undefined) => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(value ?? 0)} 
                     contentStyle={{ backgroundColor: '#18181b', borderRadius: '8px', border: '1px solid #333', boxShadow: '0 4px 12px rgba(0,0,0,0.5)', color: '#fff' }}
                     itemStyle={{ color: '#fff' }}
                   />
@@ -143,11 +143,11 @@ export default function Budget() {
               </div>
             )}
             {actualNeeds <= idealNeeds && actualWants <= idealWants && actualSavings >= idealSavings && (
-              <div className="flex gap-3 rounded-lg border border-emerald-900/50 bg-emerald-900/20 p-3">
-                <CheckCircle className="h-5 w-5 text-emerald-400" />
+              <div className="flex gap-3 border-[3px] border-black bg-white p-4">
+                <CheckCircle className="h-5 w-5 text-black" />
                 <div>
-                  <h4 className="font-semibold text-emerald-200">Great Job!</h4>
-                  <p className="text-sm text-emerald-300">Your budget is perfectly balanced. Consider increasing your investment contributions.</p>
+                  <h4 className="font-mono font-bold uppercase text-black">Great Job!</h4>
+                  <p className="text-sm text-black">Your budget is perfectly balanced. Consider increasing your investment contributions.</p>
                 </div>
               </div>
             )}

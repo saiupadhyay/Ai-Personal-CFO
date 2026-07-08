@@ -122,31 +122,31 @@ export default function StepUpSIP() {
         {/* Results */}
         <div className="lg:col-span-2 space-y-6">
           <div className="grid gap-4 md:grid-cols-2">
-            <Card className="bg-gradient-to-br from-violet-900/50 to-background border-violet-500/20">
+            <Card className="border-[3px] border-black bg-white shadow-[6px_6px_0px_#111]">
               <CardHeader className="pb-2">
                 <CardTitle className="text-sm font-medium text-muted-foreground">Projected Wealth (Step-Up)</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-3xl font-bold text-violet-400">
+                <div className="text-3xl font-bold text-black">
                   {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(finalValue)}
                 </div>
-                <div className="flex items-center gap-1 text-xs text-emerald-400 mt-1">
+                <div className="flex items-center gap-1 text-xs text-green-700">
                   <TrendingUp className="h-3 w-3" />
                   <span>{((finalValue / totalInvested) * 100).toFixed(0)}% Growth</span>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-to-br from-cyan-900/50 to-background border-cyan-500/20">
+            <Card className="border-[3px] border-black bg-white shadow-[6px_6px_0px_#111]">
               <CardHeader className="pb-2">
                 <CardTitle className="text-sm font-medium text-muted-foreground">Extra Wealth Created</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-3xl font-bold text-cyan-400">
+                <div className="text-3xl font-bold text-black">
                   +{new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(extraWealth)}
                 </div>
                 <div className="flex items-center gap-1 text-xs text-muted-foreground mt-1">
-                  <Zap className="h-3 w-3 text-yellow-400" />
+                  <Zap className="h-3 w-3 text-zinc-600" />
                   <span>vs Regular SIP</span>
                 </div>
               </CardContent>
@@ -182,7 +182,7 @@ export default function StepUpSIP() {
                     />
                     <Tooltip 
                       contentStyle={{ backgroundColor: '#18181b', border: '1px solid #333', borderRadius: '8px' }}
-                      formatter={(value: number) => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(value)}
+                      formatter={(value: number | undefined) => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(value ?? 0)}
                     />
                     <Legend />
                     <Area type="monotone" dataKey="stepUpValue" name="Step-Up SIP" stroke="#8b5cf6" fillOpacity={1} fill="url(#colorStepUp)" strokeWidth={2} />

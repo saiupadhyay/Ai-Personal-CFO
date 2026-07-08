@@ -1,9 +1,11 @@
 @import "tailwindcss";
 
 @theme {
+  /* ===== COLORS ===== */
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
+
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
 
@@ -28,63 +30,209 @@
   --color-card: hsl(var(--card));
   --color-card-foreground: hsl(var(--card-foreground));
 
-  --radius-lg: var(--radius);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-sm: calc(var(--radius) - 4px);
+  /* ===== BORDER RADIUS ===== */
+
+  --radius-lg: 0px;
+  --radius-md: 0px;
+  --radius-sm: 0px;
+
+  /* ===== ANIMATIONS ===== */
 
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
 
   @keyframes accordion-down {
-    from { height: 0; }
-    to { height: var(--radix-accordion-content-height); }
+    from {
+      height: 0;
+    }
+
+    to {
+      height: var(--radix-accordion-content-height);
+    }
   }
+
   @keyframes accordion-up {
-    from { height: var(--radix-accordion-content-height); }
-    to { height: 0; }
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+
+    to {
+      height: 0;
+    }
   }
 }
 
+/* ======================================================= */
+/*                       LIGHT THEME                        */
+/* ======================================================= */
+
 @layer base {
   :root {
-    /* Defaulting to Dark Mode (Zinc + Violet) */
-    --background: 240 10% 3.9%; /* Zinc 950 */
+    /* Background */
+
+    --background: 48 20% 95%;
+    --foreground: 0 0% 7%;
+
+    /* Cards */
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 7%;
+
+    /* Popover */
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 7%;
+
+    /* Primary */
+
+    --primary: 0 0% 7%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary */
+
+    --secondary: 48 15% 91%;
+    --secondary-foreground: 0 0% 7%;
+
+    /* Accent */
+
+    --accent: 48 15% 91%;
+    --accent-foreground: 0 0% 7%;
+
+    /* Muted */
+
+    --muted: 48 15% 91%;
+    --muted-foreground: 0 0% 40%;
+
+    /* Success / Danger */
+
+    --destructive: 4 75% 42%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders */
+
+    --border: 0 0% 7%;
+    --input: 0 0% 7%;
+    --ring: 0 0% 7%;
+
+    /* Neo Brutal */
+
+    --radius: 0px;
+  }
+
+  /* ======================================================= */
+  /*                      DARK MODE                          */
+  /* ======================================================= */
+
+  .dark {
+    --background: 0 0% 7%;
     --foreground: 0 0% 98%;
-    
-    --card: 240 10% 3.9%;
+
+    --card: 0 0% 11%;
     --card-foreground: 0 0% 98%;
-    
-    --popover: 240 10% 3.9%;
+
+    --popover: 0 0% 11%;
     --popover-foreground: 0 0% 98%;
-    
-    --primary: 263.4 70% 50.4%; /* Violet 600 */
-    --primary-foreground: 210 40% 98%;
-    
-    --secondary: 240 3.7% 15.9%; /* Zinc 800 */
+
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 7%;
+
+    --secondary: 0 0% 15%;
     --secondary-foreground: 0 0% 98%;
-    
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    
-    --accent: 240 3.7% 15.9%;
+
+    --accent: 0 0% 15%;
     --accent-foreground: 0 0% 98%;
-    
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 263.4 70% 50.4%;
-    
-    --radius: 0.75rem;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --destructive: 4 75% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 98%;
+    --input: 0 0% 98%;
+    --ring: 0 0% 98%;
   }
 }
+
+/* ======================================================= */
+/*                      GLOBAL STYLES                      */
+/* ======================================================= */
 
 @layer base {
   * {
     @apply border-border;
+    box-sizing: border-box;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
+
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+
+    min-height: 100vh;
+
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+  }
+
+  button {
+    cursor: pointer;
+    transition: all 0.12s ease;
+  }
+
+  input,
+  textarea,
+  select {
+    font-family: "Inter", sans-serif;
+  }
+}
+
+/* ======================================================= */
+/*                NEO BRUTALISM UTILITIES                  */
+/* ======================================================= */
+
+@layer utilities {
+  .neo-shadow {
+    box-shadow: 6px 6px 0px #111111;
+  }
+
+  .neo-shadow-sm {
+    box-shadow: 4px 4px 0px #111111;
+  }
+
+  .neo-shadow-hover:hover {
+    transform: translate(4px, 4px);
+    box-shadow: 2px 2px 0px #111111;
+  }
+
+  .neo-card {
+    @apply bg-card border-[3px] border-black;
+    box-shadow: 6px 6px 0px #111111;
+  }
+
+  .mono {
+    font-family: "IBM Plex Mono", monospace;
+  }
+
+  .number {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
   }
 }
