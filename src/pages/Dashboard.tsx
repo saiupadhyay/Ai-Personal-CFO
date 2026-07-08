@@ -194,7 +194,7 @@
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import MetricsGrid from "@/components/dashboard/MetricsGrid";
 import CashFlowChart from "@/components/dashboard/CashFlowChart";
-import AIInsights from "@/components/dashboard/Temp";
+import AIInsights from "@/components/dashboard/AiInsights";
 
 export default function Dashboard() {
   return (
